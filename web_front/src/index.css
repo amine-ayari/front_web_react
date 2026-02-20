@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* +13 card: open top→bottom, close bottom→top (padding-bottom transition); star at 23.09%/46.18% → 48.26%/11.34% */
+.card-expand-enter {
+  transition: padding-bottom 0.4s ease-in-out;
+}
+.card-expand-origin {
+  transform-origin: top center;
+}
+.star-circle-transition {
+  transition: left 0.4s ease-in-out, top 0.4s ease-in-out;
+}
+
+/* Prevent any grey line above the hero woman image: force borders/outlines transparent so line doesn't appear */
+section img[alt=""] {
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Force borders/outlines transparent on hero card and image wrapper (so any stray line is invisible) */
+.hero-plus13-card-inner,
+.hero-woman-image-wrap {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  outline-color: transparent !important;
+}
+
+/* Hide sub-pixel seam without clipping: so the dark grey dot at top of girl1.svg appears fully */
+.hero-woman-image-wrap img {
+  transform: translate3d(0, -1px, 0);
+  backface-visibility: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
